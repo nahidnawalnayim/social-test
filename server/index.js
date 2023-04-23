@@ -6,13 +6,24 @@ const {randomBytes} = require('crypto')
 const Post=require('./model/post')
 var bodyParser = require('body-parser');
 const router=express.Router()
+const dotenv=require('dotenv')
+dotenv.config()
 //must used middlewires
 app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }));
 
 //
+
+if(process.env.NODE_ENV!=="PRODUCTION"){
+    require("dotenv").config({
+        path:"/testsocial/.env"
+    })}
+
 const postLists={}
+app.get('/',(req,res)=>{
+res.send("HEllo nayim")
+})
 app.get('/post',async(req,res,next)=>{
    
    try{
