@@ -1,19 +1,19 @@
-import React,{useState} from 'react';
-import './styles.css';
-import axios from 'axios';
+import React, { useState } from 'react'
+import axios from 'axios'
+import './styles.css'
+const Comment = () => {
+const commentsubmit=async(event)=>{
+    event.preventDefault();
+    await axios.post('http://localhost:4000/commentpost',{
+        text
+    })
+    setText('')
+}
 
-export default function Tailform() {
-  const [title,settitle]=useState('')
-  const onSubmit=async(event)=>{
-      event.preventDefault()
-      await axios.post('http://localhost:4000/post',{title}
-      )
-      settitle('')
-  }
+const [text,setText]=useState('')
   return (
-    <>
-  
-      <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
+    <div>
+<div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
           <img
             className="mx-auto h-10 w-auto"
@@ -26,7 +26,7 @@ export default function Tailform() {
         </div>
 
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-          <form className="space-y-6" action="#" method="POST" onSubmit={onSubmit}>
+          <form className="space-y-6" action="#" method="POST" onSubmit={commentsubmit}>
             <div>
               <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
                 Email address
@@ -35,8 +35,8 @@ export default function Tailform() {
                 <input
                   id="email"
                   name="email"
-                  value={title}
-                  onChange={e=> settitle(e.target.value)}
+                  value={text}
+                  onChange={e=> setText(e.target.value)}
                   type="text"
                   autoComplete="email"
                   required
@@ -63,6 +63,10 @@ export default function Tailform() {
           </p>
         </div>
       </div>
-    </>
+
+        
+    </div>
   )
 }
+
+export default Comment

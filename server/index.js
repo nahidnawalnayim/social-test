@@ -4,6 +4,7 @@ const mongoose=require('mongoose')
 const app = express()
 const {randomBytes} = require('crypto')
 const Post=require('./model/post')
+const Comment=require('./model/comment')
 var bodyParser = require('body-parser');
 const router=express.Router()
 const dotenv=require('dotenv')
@@ -21,6 +22,8 @@ if(process.env.NODE_ENV!=="PRODUCTION"){
     })}
 
 const postLists={}
+//
+
 app.get('/',(req,res)=>{
 res.send("HEllo nayim")
 })
@@ -46,6 +49,20 @@ app.post('/post',async(req,res,next)=>{
 return res.status(201).json({message:"post created"})
     }catch(e){
 console.log(e);
+    }
+
+})
+
+//Comment service
+
+app.post('/commentpost',async(req,res)=>{
+    const {text}=req.body
+    try{
+        let newComment=new Comment({text})
+        await newComment.save()
+        return res.status(201).json({message:"comment created successfully"})
+    }catch(e){
+        console.log(e);
     }
 
 })

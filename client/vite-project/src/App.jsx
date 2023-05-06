@@ -1,7 +1,5 @@
 import * as React from "react";
 
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import "./App.css";
 import axios from "axios";
 import Postcreate from "./postcreate";
@@ -14,20 +12,21 @@ import Example from "./blog";
 import Navbar from "./nav";
 import Hero from "./hero";
 import Tailform from "./tailform";
+import Comment from "./comment";
 
 function App() {
   return (
     <div className="App">
       <div>
-       <Hero />
+        <Hero />
         <br />
         <br />
-        
+        <input type="text" name="test" value="test" />
         <Routes>
+          <Route path="/form" element={<Tailform />} />
           <Route path="" element={<Postlist />} />
+          <Route path="/comment" element={<Comment />} />
         </Routes>
-       
-        <Tailform />
         <ul>
           <li>
             <Link to="/"> home </Link>
