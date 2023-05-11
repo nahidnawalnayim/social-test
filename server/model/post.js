@@ -4,7 +4,11 @@ const PostSchema=mongoose.Schema({
     title:{
     type: String,
     required: true
-   }
+   },
+//    image:{
+//     type: Object,
+//     required: true
+//    }
    
 })
 
