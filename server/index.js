@@ -5,12 +5,14 @@ const app = express()
 const Post=require('./model/post')
 const Comment=require('./model/comment')
 const User=require('./model/user')
+const {getUserbyID}=require('./controller/user')
 // const authenticate=require('./middleware/authenticate')
 const {Postcreate}=require('./controller/postController')
 var bodyParser = require('body-parser');
 const router=require('express').Router();
 const dotenv=require('dotenv')
 const routes= require('./routes/index')
+const {findUserByprop}=require('./controller/user')
 dotenv.config()
 //must used middlewires
 app.use(cors())
@@ -47,19 +49,7 @@ app.get('/postcon',async(req,res,next)=>{
    }
   
 })
-//POST SERVICE
-// app.post('/post',async(req,res,next)=>{
-//     const {title}=req.body;
-//     try{
-//         let newpost=new Post({title})
-       
-//         await newpost.save()
-// return res.status(201).json({message:"post created"})
-//     }catch(e){
-// console.log(e);
-//     }
 
-// })
 
 //Comment service
 
@@ -75,19 +65,10 @@ app.post('/commentpost',async(req,res)=>{
 
 })
 
-// app.post('/reg',async(req,res)=>{
-//     const {name,email,password}=req.body
-//     try{
-//         let user=new User({name,email,password})
-//         await user.save()
-//         return res.status(201).json({message:"User created successfully"})
-//     }catch(e){
-// console.log(e);
-//     }
-// })
 
+//get user
 
-
+  
 
 mongoose.connect('mongodb://localhost:27017/testsocial',{
     useNewUrlParser: true,

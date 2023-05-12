@@ -2,23 +2,24 @@ import * as React from "react";
 
 import "./App.css";
 import axios from "axios";
-import Postcreate from "./postcreate";
+//import Postcreate from "./postcreate";
 import Postlist from "./card";
-import MenubarDemo from "./Menu";
-import DialogDemo from "./radixForm";
-import Form from "./form";
+// import MenubarDemo from "./Menu";
+//import Form from "./form";
 import { Routes, Route, Outlet, Link } from "react-router-dom";
-import Example from "./blog";
-import Navbar from "./nav";
-import Hero from "./hero";
+//import Example from "./blog";
+//import Navbar from "./nav";
+//import Hero from "./hero";
 import Tailform from "./tailform";
 import Comment from "./comment";
+import Header from "./header";
 
 function App() {
   return (
     <div className="App">
       <div>
-        <Hero />
+        <Header />
+        {/* <Hero /> */}
         <br />
         <br />
         <input type="text" name="test" value="test" />
@@ -31,15 +32,10 @@ function App() {
           <li>
             <Link to="/"> home </Link>
           </li>
-          <li>
-            <Link to="/radix"> form </Link>
-          </li>
+       
           <li> </li>
         </ul>
-        {/* <Postcreate />  */}
-        {/* <Form />
 
-      <DialogDemo /> */}
       </div>
     </div>
   );
